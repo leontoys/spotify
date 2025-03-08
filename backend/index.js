@@ -3,6 +3,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const app = express()
+//json parser for POST from client
+app.use(express.json())
 
 //app.get('/api/token',async (req,res)=>{
 const getAccessToken = async()=>{
@@ -19,12 +21,30 @@ const getAccessToken = async()=>{
     });  
     
     const data = await response.json()
-    res.send(data.access_token)
+    return data.access_token
 }
 
-app.get('/api/query/:query', async (req,res)=>{
-    const token = await getAccessToken()
-    console.log("token",token)
+app.get('/api/search/:query', async (req,res)=>{
+    try {
+        
+        const query = req.params.query
+        const accessToken = await getAccessToken()
+        const response = await fetch(
+          `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=10`,
+          {
+            headers : {
+              Authorization : `Bearer ${accessToken}`
+            }
+          }
+          )
+
+       const data = await response.json()
+       res.send(data.tracks.items)
+        
+    } catch (error) {
+        console.error(error)
+        res.status(500).send(error) //server error
+    }
 })
 
 const PORT = process.env.PORT || 5001

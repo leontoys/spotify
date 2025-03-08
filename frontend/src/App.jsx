@@ -2,18 +2,12 @@ import { useState } from 'react'
 import './App.css'
 import List from './components/List'
 import SearchForm from "./components/SearchForm";
+import axios from 'axios';
 
 function App() {
 
   const [results,setResults] = useState([])
   const [loading,setLoading] = useState(false)
-
-  const getAccessToken = async () => {
-
-    const token = await axios.get(`http://localhost:3001/api/token`)
-
-    return token;
-  };
 
   const onSearch = async(query)=>{
 
@@ -25,19 +19,10 @@ function App() {
     setLoading(true)
     //query spotify
     try {
-        const accessToken = await getAccessToken()
-        const response = await fetch(
-          `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=10`,
-          {
-            headers : {
-              Authorization : `Bearer ${accessToken}`
-            }
-          }
-          )
 
-       const data = await response.json()
-       setResults(data.tracks.items)
-       console.log("data",data)   
+      const response = await axios.get(`http://localhost:3001/api/search/${query}`)
+
+      setResults(response.data)
 
     } catch (error) {
       console.error(error)
