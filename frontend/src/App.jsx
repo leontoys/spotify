@@ -20,7 +20,7 @@ function App() {
     //query spotify
     try {
 
-      const response = await axios.get(`http://localhost:3001/api/search/${query}`)
+      const response = await axios.get(`/api/search/${query}`)
 
       setResults(response.data)
 
