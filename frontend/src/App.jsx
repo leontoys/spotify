@@ -9,20 +9,10 @@ function App() {
   const [loading,setLoading] = useState(false)
 
   const getAccessToken = async () => {
-    const clientId = import.meta.env.VITE_CLIENT_ID; // Replace with your Spotify Client ID
-    const clientSecret = import.meta.env.VITE_CLIENT_SECRET; // Replace with your Spotify Client Secret
-  
-    const response = await fetch('/api/api/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic ${btoa(`${clientId}:${clientSecret}`)}`,
-      },
-      body: 'grant_type=client_credentials',
-    });
-  
-    const data = await response.json();
-    return data.access_token;
+
+    const token = await axios.get(`http://localhost:3001/api/token`)
+
+    return token;
   };
 
   const onSearch = async(query)=>{
