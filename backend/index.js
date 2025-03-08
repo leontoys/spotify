@@ -5,6 +5,7 @@ dotenv.config()
 const app = express()
 //json parser for POST from client
 app.use(express.json())
+app.use(express.static('dist'))//serve front end 
 
 //app.get('/api/token',async (req,res)=>{
 const getAccessToken = async()=>{
