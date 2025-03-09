@@ -26,6 +26,7 @@ function App() {
 
       const response = await axios.get(`${baseUrl}/api/search/${query}`)
 
+      console.log(response.data)
       setResults(response.data)
 
     } catch (error) {
