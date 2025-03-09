@@ -9,6 +9,10 @@ function App() {
   const [results,setResults] = useState([])
   const [loading,setLoading] = useState(false)
 
+  //check if app is running in dev or development mode?
+  const isDevelopment = import.meta.env.MODE === "development"
+  const baseUrl = isDevelopment ? "" : "https://leon-spotify.onrender.com"
+
   const onSearch = async(query)=>{
 
     if(!query){
@@ -20,7 +24,7 @@ function App() {
     //query spotify
     try {
 
-      const response = await axios.get(`/api/search/${query}`)
+      const response = await axios.get(`${baseUrl}/api/search/${query}`)
 
       setResults(response.data)
 
