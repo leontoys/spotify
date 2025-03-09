@@ -11,7 +11,7 @@ function App() {
 
   //check if app is running in dev or development mode?
   const isDevelopment = import.meta.env.MODE === "development"
-  const baseUrl = isDevelopment ? "" : "https://leon-spotify.onrender.com"
+  const baseUrl = isDevelopment ? "" : "https://spotify-ywzo.onrender.com"
 
   const onSearch = async(query)=>{
 
