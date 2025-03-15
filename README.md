@@ -1,7 +1,25 @@
-# spotify
-spotify
+# 🎶 Spotify Search App
 
-Live Preview - https://spotify-j18n.vercel.app/
+A simple web application that allows users to search for songs, albums, and artists on Spotify. The app fetches data from the [Spotify API](https://developer.spotify.com/documentation/web-api/) to display information about tracks, albums, and artists.
 
-Frontend Deployed @Vercel
-Backend Deployed @Render
+---
+
+## 🚀 Features
+
+- 🔍 Search for songs, albums, and artists by name.
+- 🎧 Displays track details, album covers, and artist information.
+- 🌐 Integrates with the Spotify API to fetch live data.
+
+---
+
+## 🛠 Tech Stack
+
+- React
+- JavaScript (ES6+)
+- Spotify API
+- CSS (for styling)
+
+---
+## 🌐 Live Demo
+
+🔗 [Spotify Search](https://spotify-j18n.vercel.app/)
