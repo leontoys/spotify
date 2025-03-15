@@ -5,7 +5,7 @@
   }
   
   body{
-    background-color: #81c784;  
+    background-color: gold;  
     font-family: Arial, Helvetica, sans-serif;
   }
   
@@ -25,7 +25,7 @@
   }
   
   .card{
-    background-color: #ffeb3b;
+    background-color: orange;
     padding : 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);  
